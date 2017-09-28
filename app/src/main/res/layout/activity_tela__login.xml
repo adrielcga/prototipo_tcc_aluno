@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    tools:context="adriel145089.prototipo_tcc_aluno.Tela_Login">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
+
+        <Button
+            android:id="@+id/login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="Login"
+            android:text="Login"
+            tools:layout_editor_absoluteX="260dp"
+            tools:layout_editor_absoluteY="285dp"
+            android:layout_above="@+id/imageView"
+            android:layout_alignEnd="@+id/senha"
+            android:layout_marginBottom="15dp" />
+
+        <Button
+            android:id="@+id/cadastrar"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:onClick="AbrirTelaCadastro"
+            android:text="Se cadastre aqui!"
+            tools:layout_editor_absoluteX="47dp"
+            tools:layout_editor_absoluteY="285dp"
+            android:layout_alignBaseline="@+id/login"
+            android:layout_alignBottom="@+id/login"
+            android:layout_alignStart="@+id/senha" />
+
+        <EditText
+            android:id="@+id/usuario"
+            android:layout_width="298dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="120dp"
+            android:ems="10"
+            android:hint="RA"
+            android:inputType="number"
+            tools:layout_editor_absoluteX="47dp"
+            tools:layout_editor_absoluteY="162dp"
+            android:layout_above="@+id/login"
+            android:layout_centerHorizontal="true" />
+
+        <EditText
+            android:id="@+id/senha"
+            android:layout_width="298dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="47dp"
+            android:ems="10"
+            android:hint="Senha"
+            android:inputType="textPassword"
+            tools:layout_editor_absoluteX="47dp"
+            tools:layout_editor_absoluteY="225dp"
+            android:layout_above="@+id/login"
+            android:layout_alignStart="@+id/usuario" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/botao_scan"
+            android:layout_centerHorizontal="true"
+            app:srcCompat="@drawable/icone"
+            tools:layout_editor_absoluteX="9dp"
+            tools:layout_editor_absoluteY="341dp" />
+
+    </RelativeLayout>
+
+
+
+</android.support.constraint.ConstraintLayout>

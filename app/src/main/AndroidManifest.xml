@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Tela_Instrucoes"
+            android:name=".Tela_Login"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Tela_Login"
+            android:name=".Tela_Instrucoes"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Tela_Prova"

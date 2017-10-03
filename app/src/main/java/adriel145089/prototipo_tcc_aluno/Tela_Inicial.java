@@ -1,11 +1,15 @@
 package adriel145089.prototipo_tcc_aluno;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -15,6 +19,7 @@ import android.widget.Toast;
 import com.google.zxing.Result;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
+import me.drakeet.materialdialog.MaterialDialog;
 
 public class Tela_Inicial extends AppCompatActivity implements ZXingScannerView.ResultHandler {
 
@@ -23,6 +28,10 @@ public class Tela_Inicial extends AppCompatActivity implements ZXingScannerView.
     String parametros = "";
     String qrcode;
     TextView textviewQrcode;
+
+    public static final String TAG = "LOG";
+    public static final int REQUEST_PERMISSIONS_CODE = 128;
+    private MaterialDialog mMaterialDialog;
 
 
 
@@ -37,13 +46,66 @@ public class Tela_Inicial extends AppCompatActivity implements ZXingScannerView.
     }
 
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        Log.i(TAG, "test");
+        switch( requestCode ){
+            case REQUEST_PERMISSIONS_CODE:
+                for( int i = 0; i < permissions.length; i++ ){
+
+                    if( permissions[i].equalsIgnoreCase( Manifest.permission.CAMERA )
+                            && grantResults[i] == PackageManager.PERMISSION_GRANTED ){
+
+                        CameraScanner = new ZXingScannerView(this);
+                        setContentView(CameraScanner);
+                        CameraScanner.setResultHandler(this);
+                        CameraScanner.startCamera();
+                    }
+                }
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
     public void Scan_QRcode(View view){
+
+        if( ContextCompat.checkSelfPermission( this, Manifest.permission.CAMERA ) != PackageManager.PERMISSION_GRANTED ){
+
+            if( ActivityCompat.shouldShowRequestPermissionRationale( this, Manifest.permission.CAMERA ) ){
+                callDialog( "É preciso dar permissão para acessar a CAMERA.", new String[]{Manifest.permission.CAMERA} );
+            }
+            else{
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, REQUEST_PERMISSIONS_CODE );
+            }
+        }
+        else{
 
                 CameraScanner = new ZXingScannerView(this);
                 setContentView(CameraScanner);
                 CameraScanner.setResultHandler(this);
                 CameraScanner.startCamera();
+            }
 
+    }
+
+    private void callDialog( String message, final String[] permissions ){
+        mMaterialDialog = new MaterialDialog(this)
+                .setTitle("PERMISSÃO")
+                .setMessage( message )
+                .setPositiveButton("Ok", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        ActivityCompat.requestPermissions(Tela_Inicial.this, permissions, REQUEST_PERMISSIONS_CODE);
+                        mMaterialDialog.dismiss();
+                    }
+                })
+                .setNegativeButton("Cancelar", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mMaterialDialog.dismiss();
+                    }
+                });
+        mMaterialDialog.show();
     }
 
 

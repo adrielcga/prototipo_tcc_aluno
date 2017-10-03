@@ -183,4 +183,5 @@ public class Tela_Inicial extends AppCompatActivity implements ZXingScannerView.
 
         }
     }
+
 }

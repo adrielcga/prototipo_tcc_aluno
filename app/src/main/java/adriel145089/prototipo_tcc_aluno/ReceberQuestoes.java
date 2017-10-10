@@ -1,13 +1,9 @@
 package adriel145089.prototipo_tcc_aluno;
 
-import android.content.Context;
 import android.os.AsyncTask;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -16,7 +12,6 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.util.ArrayList;
 
 
 /**
@@ -26,14 +21,12 @@ import java.util.ArrayList;
 public class ReceberQuestoes extends AsyncTask <Void, Void, String> {
 
     private static final String HOST = "http://es.ft.unicamp.br/ulisses/appaluno/get_questoes.php";
-    private Context context;
-    private  ListView listView;
+    private  Tela_Prova tela_prova;
     private  String[] fields;
     private  String[] values;
 
-    public ReceberQuestoes(Context context, ListView listView, String[] fields, String[] values){
-        this.context  = context;
-        this.listView = listView;
+    public ReceberQuestoes(Tela_Prova tela_prova, String[] fields, String[] values){
+        this.tela_prova = tela_prova;
         this.fields   = fields;
         this.values   = values;
     }
@@ -112,27 +105,16 @@ public class ReceberQuestoes extends AsyncTask <Void, Void, String> {
     protected  void onPostExecute(String result){
 
            //Convertendo JSONArray para ArrayList
-
-
-        ArrayList<String> questao = new ArrayList<>();
+        // ArrayList<String> questao = new ArrayList<>();
         try {
             JSONArray jsonArray = new JSONArray(result);
-            for (int i = 0; i < jsonArray.length(); i++) {
+            /*for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
-                questao.add(jsonObject.getString("Questao"));
-            }
+                questao.add(jsonObject.getString("TituloQuestao"));
+            }*/
+            tela_prova.ReceberQuestoes(jsonArray);
         } catch (JSONException exception){
             exception.printStackTrace();
         }
-
-
-          //Adicionando dados na ListView
-
-
-       ArrayAdapter<String> adapter = new ArrayAdapter(context, android.R.layout.simple_list_item_checked, questao);
-       listView.setAdapter(adapter);
-
-
-
     }
 }

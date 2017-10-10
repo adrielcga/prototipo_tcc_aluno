@@ -1,14 +1,16 @@
 package adriel145089.prototipo_tcc_aluno;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
+import me.drakeet.materialdialog.MaterialDialog;
+
 public class Tela_Resultado extends AppCompatActivity {
 
     private TextView resultados;
+    private MaterialDialog mMaterialDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,16 +51,21 @@ public class Tela_Resultado extends AppCompatActivity {
 
 
         //fechar o app
-        Intent intent = new Intent(Intent.ACTION_MAIN);
+        /*Intent intent = new Intent(Intent.ACTION_MAIN);
         intent.addCategory(Intent.CATEGORY_HOME);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
+        startActivity(intent);*/
+        finish();
 
 
 
     }
 
+    @Override
+    protected void onPause(){
 
-
+        super.onPause();
+        finish();
+    }
 
 }

@@ -4,18 +4,5 @@
     <string name="opcao_aba">Abas</string>
     <string name="opcao_spinner">Spinner</string>
     <string name="opcao_pager">View Pager</string>
-    <string-array name="questoes">
-        <item>Questão 1</item>
-        <item>Questão 2</item>
-        <item>Questão 3</item>
-        <item>Questão 4</item>
-        <item>Questão 5</item>
-        <item>Questão 6</item>
-        <item>Questão 7</item>
-        <item>Questão 8</item>
-        <item>Questão 9</item>
-        <item>Questão 10</item>
-
-    </string-array>
 
 </resources>

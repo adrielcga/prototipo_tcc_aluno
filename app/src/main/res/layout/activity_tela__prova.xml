@@ -5,9 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:keepScreenOn="true"
     tools:context="adriel145089.prototipo_tcc_aluno.Tela_Prova"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:keepScreenOn="true">
 
     <include layout="@layout/toolbar"/>
 
@@ -19,26 +19,32 @@
         android:text="TextView"
         android:layout_gravity="right"/>
 
-    <FrameLayout
-        android:id="@+id/frame"
+<TextView
+        android:id="@+id/enunciado"
         android:layout_width="match_parent"
-        android:layout_height="211dp">
+        android:layout_height="wrap_content" />
 
-    </FrameLayout>
-
-
+<!--    <Fragment
+        android:id="@+id/quizFragment"
+        android:name="adriel145089.prototipo_tcc_aluno.tela_prova_questoes"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        tools:layout="@layout/fragment_tela_prova_questoes" />
+-->
     <ListView
-        android:id="@+id/receberquestao"
+        android:id="@+id/listView"
         android:layout_width="match_parent"
-        android:layout_height="203dp"
-        android:layout_weight="0.95" />
+        android:layout_height="0dp"
+        android:layout_weight="1"
+    />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/finalizar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Finalizar"
+        android:text="Finalizar Prova"
         android:onClick="abrirFinalizar"/>
 
 

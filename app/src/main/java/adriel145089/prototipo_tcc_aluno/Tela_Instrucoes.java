@@ -16,7 +16,7 @@ public class Tela_Instrucoes extends AppCompatActivity {
 
         TextView textView = (TextView)findViewById(R.id.instrucoesDoProf);
 
-        textView.setText("sdf");
+        textView.setText("Aguardando Servidor...");
 
 
     ReceberInstrucoes receberInstrucoes = new ReceberInstrucoes(textView);
@@ -31,5 +31,13 @@ public class Tela_Instrucoes extends AppCompatActivity {
 
         Intent abrirProva = new Intent(this, Tela_Prova.class);
         startActivity(abrirProva);
+    }
+
+    @Override
+    protected void onPause(){
+
+        super.onPause();
+
+        finish();
     }
 }

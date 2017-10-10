@@ -26,7 +26,7 @@ public class Tela_Inicial extends AppCompatActivity implements ZXingScannerView.
     private ZXingScannerView CameraScanner;
     String url = "";
     String parametros = "";
-    String qrcode;
+    //String qrcode;
     TextView textviewQrcode;
 
     public static final String TAG = "LOG";
@@ -71,7 +71,7 @@ public class Tela_Inicial extends AppCompatActivity implements ZXingScannerView.
         if( ContextCompat.checkSelfPermission( this, Manifest.permission.CAMERA ) != PackageManager.PERMISSION_GRANTED ){
 
             if( ActivityCompat.shouldShowRequestPermissionRationale( this, Manifest.permission.CAMERA ) ){
-                callDialog( "É preciso dar permissão para acessar a CAMERA.", new String[]{Manifest.permission.CAMERA} );
+                callDialog_Permissao( "É preciso dar permissão para acessar a CAMERA.", new String[]{Manifest.permission.CAMERA} );
             }
             else{
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, REQUEST_PERMISSIONS_CODE );
@@ -87,7 +87,8 @@ public class Tela_Inicial extends AppCompatActivity implements ZXingScannerView.
 
     }
 
-    private void callDialog( String message, final String[] permissions ){
+    //caixa de dialogo perguntando se o usuario autoriza dar permissao para acessar a camera
+    private void callDialog_Permissao( String message, final String[] permissions ){
         mMaterialDialog = new MaterialDialog(this)
                 .setTitle("PERMISSÃO")
                 .setMessage( message )
@@ -109,20 +110,48 @@ public class Tela_Inicial extends AppCompatActivity implements ZXingScannerView.
     }
 
 
-    /*@Override
+    //
+    @Override
+    public void onBackPressed() {
+        //caixa de dialogo perguntando se o usuario realmente quer sair
+
+        mMaterialDialog = new MaterialDialog(this)
+                .setTitle("DESEJA REALMENTE SAIR?")
+                .setMessage( "Se sair perderá todo o progresso ate agora" )
+                .setPositiveButton("Ok", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        finish();
+                        mMaterialDialog.dismiss();
+                    }
+                })
+                .setNegativeButton("Cancelar", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mMaterialDialog.dismiss();
+                    }
+                });
+        mMaterialDialog.show();
+    }
+
+    @Override
     protected void onPause(){
 
+        //CameraScanner.stopCamera();
         super.onPause();
-        CameraScanner.stopCamera();
+        finish();
+    }
 
-    }*/
+
+
 
     @Override
     public void handleResult(Result result) {
 
         Log.w("handleResult", result.getText());
 
-        textviewQrcode.setText(result.getText().toString());
+        textviewQrcode.setText(result.getText());
 
         CheckQrCode(textviewQrcode);
 

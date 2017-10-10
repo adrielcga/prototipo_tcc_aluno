@@ -2,16 +2,23 @@ package adriel145089.prototipo_tcc_aluno;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+
+import me.drakeet.materialdialog.MaterialDialog;
 
 
 public class Tela_Prova extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
@@ -20,22 +27,53 @@ public class Tela_Prova extends AppCompatActivity implements AdapterView.OnItemS
     Toolbar mToolbar;
     Spinner mSpinner;
     private ContaRegressivaProva contadorRegre;
+    private JSONArray   questoes;
+    private boolean[][] respostas;
+
+    private int       questao;
+    private ListView listView;
+    private TextView enunciado;
+    private ArrayAdapter  arrayAdapter;
+    ArrayList<String> alternativas;
+
+    private MaterialDialog mMaterialDialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela__prova);
 
-        //criando uma toolbar para as questoes
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                this,
+        questao = -1;
+
+        alternativas = new ArrayList<>();
+        listView = (ListView)findViewById(R.id.listView);
+        enunciado = (TextView)findViewById(R.id.enunciado);
+        arrayAdapter=new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1,
-                getResources().getStringArray(R.array.questoes)
-        );
+                alternativas);
+
+        listView.setAdapter(arrayAdapter);
+
+
+        AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> listview,
+                                    View view,
+                                    int position,
+                                    long id) {
+                // Adriel -- Colocar um if
+                Log.v("asdfasdf", questao + ","+ position);
+                Tela_Prova.this.respostas[questao][position] = true;
+
+            }
+        };
+        listView.setOnItemClickListener(itemClickListener);
 
         mSpinner = new Spinner(this);
-        mSpinner.setAdapter(adapter);
         mSpinner.setOnItemSelectedListener(this);
+
+
+
         mToolbar = (Toolbar)findViewById(R.id.toolbar);
         mToolbar.addView(mSpinner);
         setSupportActionBar(mToolbar);
@@ -43,19 +81,40 @@ public class Tela_Prova extends AppCompatActivity implements AdapterView.OnItemS
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
 
+
+
         //---------------------------------
         //receber questoes
-
-
-        String[] fields = {"Questao",   "Alternativa1", "Alternativa2", "Alternativa3", "Alternativa4", "Alternativa5", "Alternativa6"};
+        String[] fields = {};
         String[] values = {};
-
-
         fields = new String[0];
         values = new String[0];
-        ListView listView = (ListView) findViewById(R.id.receberquestao);
-        ReceberQuestoes receberQuestoes = new ReceberQuestoes(this, listView, fields, values);
+        ReceberQuestoes receberQuestoes = new ReceberQuestoes(this, fields, values);
         receberQuestoes.execute();
+    }
+
+    public void ReceberQuestoes(JSONArray jsonArray){
+        this.questoes = jsonArray;
+        this.respostas = new boolean[this.questoes.length()][9];
+        ArrayList<String> titulos = new ArrayList<>();
+
+        try {
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                titulos.add(jsonObject.getString("TituloQuestao"));
+            }
+        }  catch (JSONException exception){
+            exception.printStackTrace();
+        }
+
+
+        //criando uma toolbar para as questoes
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                this,
+                android.R.layout.simple_list_item_1,
+                titulos
+        );
+        mSpinner.setAdapter(adapter);
 
     }
 
@@ -77,19 +136,64 @@ public class Tela_Prova extends AppCompatActivity implements AdapterView.OnItemS
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
     }
+
+    private void exibirArray(){
+        for (int i = 0; i < respostas.length; i++){
+            String str = "";
+            for (int j = 0; j < 9; j++){
+                str += respostas[i][j]+",";
+            }
+            Log.v("Resposta", str);
+        }
+    }
+
     private void exibirItem(int position) {
+        exibirArray();
+        JSONObject jsonObject;
+        questao = position;
+        try {
+            jsonObject = questoes.getJSONObject(position);
+            enunciado.setText(jsonObject.getString("EnunQuestao"));
+            alternativas.clear();
+
+            String[] enunFiels = {
+                    "EnunAltA",
+                    "EnunAltB",
+                    "EnunAltC",
+                    "EnunAltD",
+                    "EnunAltE",
+                    "EnunAltF",
+                    "EnunAltG",
+                    "EnunAltH",
+                    "EnunAltI"
+            };
+
+            for (int i = 0; i < enunFiels.length; i++){
+                String x = jsonObject.getString(enunFiels[i]);
+                if (!x.equals("null")){
+                    alternativas.add(x);
+                }
+            }
+            arrayAdapter.notifyDataSetChanged();
 
 
+        }  catch (JSONException exception){
+            exception.printStackTrace();
+        }
+
+
+        /*
         //pilha de fragmentos
         FragmentManager fm = getSupportFragmentManager();
         android.support.v4.app.Fragment f = fm.findFragmentByTag("tag");
         FragmentTransaction ft = fm.beginTransaction();
         if (f != null) {
-            ft.replace(R.id.frame, f, "tag");
+//            ft.replace(R.id.frame, f, "tag");
             ft.addToBackStack(null);
             ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
         }
         ft.commit();
+        */
     }
 
     @Override
@@ -103,9 +207,7 @@ public class Tela_Prova extends AppCompatActivity implements AdapterView.OnItemS
     }
 
     //abrir a tela de finalizar, onde tem o resumo das questoes
-
     public void abrirFinalizar(View view){
-
 
         Intent abrirtela = new Intent(Tela_Prova.this, Tela_Resultado.class);
         abrirtela.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
@@ -113,11 +215,36 @@ public class Tela_Prova extends AppCompatActivity implements AdapterView.OnItemS
 
     }
 
-    public void ReceberQuestoes(View view){
+    @Override
+    public void onBackPressed() {
+        //caixa de dialogo perguntando se o usuario realmente quer sair
 
+        mMaterialDialog = new MaterialDialog(this)
+                .setTitle("DESEJA REALMENTE SAIR?")
+                .setMessage( "Se sair perderá todo o progresso ate agora" )
+                .setPositiveButton("Ok", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
 
+                        finish();
+                        mMaterialDialog.dismiss();
+                    }
+                })
+                .setNegativeButton("Cancelar", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mMaterialDialog.dismiss();
+                    }
+                });
+        mMaterialDialog.show();
     }
 
+    @Override
+    protected void onPause(){
+
+        super.onPause();
+        finish();
+    }
 
 
 }

@@ -17,8 +17,9 @@ import java.net.URLEncoder;
 
 public class ReceberInstrucoes extends AsyncTask<Void, Void, String>{
 
-private static final String HOST = "http://192.168.1.34/appaluno/receberInstrucao.php";
+private static final String HOST = "http://es.ft.unicamp.br/ulisses/appaluno/receber_descricao";
 TextView textView;
+
 
 
 public ReceberInstrucoes( TextView textView){
@@ -36,9 +37,9 @@ protected String doInBackground(Void... objects) {
              */
         String data =
         URLEncoder.encode("table","UTF-8")+"="+
-        URLEncoder.encode("Avaliacao","UTF-8"); //+ "&"+
-        //URLEncoder.encode("IdAvalicao","UTF-8")+"="+
-        //URLEncoder.encode("555","UTF-8");
+        URLEncoder.encode("Avaliacao","UTF-8") + "&"+
+        URLEncoder.encode("hash","UTF-8")+"="+
+        URLEncoder.encode(Tela_Inicial.qrcode,"UTF-8");
 
 
 

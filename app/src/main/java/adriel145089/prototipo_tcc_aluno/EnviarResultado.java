@@ -37,8 +37,8 @@ public class EnviarResultado extends AsyncTask<Void, Void, String>{
 
                //Preparando os dados para envio via post
             String data =
-                    URLEncoder.encode("database","UTF-8")+"="+
-                            URLEncoder.encode("appaluno","UTF-8")+"&"+
+                    //URLEncoder.encode("database","UTF-8")+"="+
+                            //URLEncoder.encode("appaluno","UTF-8")+"&"+
 
                             URLEncoder.encode("table","UTF-8")+"="+
                             URLEncoder.encode("","UTF-8"); //-----------------falta nome da tabela

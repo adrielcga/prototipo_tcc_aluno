@@ -30,9 +30,6 @@ public class Tela_Login extends AppCompatActivity {
 
     public void AbrirTelaCadastro (View view){
 
-        //enviarUsuario = (EditText) findViewById(R.id.usuario);
-        //enviarSenha = (EditText) findViewById(R.id.senha);
-
         Intent abrirTelaCadastro = new Intent(this, Tela_Cadastro.class);
 
         Bundle parametros = new Bundle();

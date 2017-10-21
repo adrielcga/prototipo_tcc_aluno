@@ -50,20 +50,27 @@ public class Tela_Prova extends AppCompatActivity implements AdapterView.OnItemS
         listView = (ListView)findViewById(R.id.listView);
         enunciado = (TextView)findViewById(R.id.enunciado);
         arrayAdapter=new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1,
+                R.layout.rowlayout, R.id.checkedTextView,
                 alternativas);
 
         listView.setAdapter(arrayAdapter);
 
 
+
+        //click resposta
         AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> listview,
                                     View view,
                                     int position,
                                     long id) {
-                // Adriel -- Colocar um if
-                Log.v("asdfasdf", questao + ","+ position);
-                Tela_Prova.this.respostas[questao][position] = true;
+
+                if(Tela_Prova.this.respostas[questao][position]){
+                    Log.v("asdfasdf", questao + ","+ position);
+                    Tela_Prova.this.respostas[questao][position] = false;
+                } else {
+                    Log.v("asdfasdf", questao + ","+ position);
+                    Tela_Prova.this.respostas[questao][position] = true;
+                }
 
             }
         };
@@ -108,7 +115,7 @@ public class Tela_Prova extends AppCompatActivity implements AdapterView.OnItemS
         }
 
 
-        //criando uma toolbar para as questoes
+        //criando na toolbar lsita de questoes questoes
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                 this,
                 android.R.layout.simple_list_item_1,
@@ -156,6 +163,7 @@ public class Tela_Prova extends AppCompatActivity implements AdapterView.OnItemS
             enunciado.setText(jsonObject.getString("EnunQuestao"));
             alternativas.clear();
 
+
             String[] enunFiels = {
                     "EnunAltA",
                     "EnunAltB",
@@ -181,19 +189,6 @@ public class Tela_Prova extends AppCompatActivity implements AdapterView.OnItemS
             exception.printStackTrace();
         }
 
-
-        /*
-        //pilha de fragmentos
-        FragmentManager fm = getSupportFragmentManager();
-        android.support.v4.app.Fragment f = fm.findFragmentByTag("tag");
-        FragmentTransaction ft = fm.beginTransaction();
-        if (f != null) {
-//            ft.replace(R.id.frame, f, "tag");
-            ft.addToBackStack(null);
-            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-        }
-        ft.commit();
-        */
     }
 
     @Override
@@ -202,7 +197,7 @@ public class Tela_Prova extends AppCompatActivity implements AdapterView.OnItemS
         super.onResume();
 
         TextView contador = (TextView) findViewById(R.id.contadorRegressivo);
-        contadorRegre = new ContaRegressivaProva(this, contador, 2*60*60*1000 /*tempoDaContagem*/, 1000); //o 1000 é pra contar de 1 em 1 segundo, é 1000 pq é em milisegundos
+        contadorRegre = new ContaRegressivaProva(this, contador, 60*60*1000 /*tempoDaContagem*/, 1000); //o 1000 é pra contar de 1 em 1 segundo, é 1000 pq é em milisegundos
         contadorRegre.start();
     }
 
@@ -211,6 +206,9 @@ public class Tela_Prova extends AppCompatActivity implements AdapterView.OnItemS
 
         Intent abrirtela = new Intent(Tela_Prova.this, Tela_Resultado.class);
         abrirtela.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+        Bundle bundle_resposta = new Bundle();
+        bundle_resposta.putString("Resposta", respostas.toString());
+        abrirtela.putExtras(bundle_resposta);
         startActivity(abrirtela);
 
     }

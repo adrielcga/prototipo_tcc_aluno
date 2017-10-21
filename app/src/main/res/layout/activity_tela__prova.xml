@@ -19,24 +19,17 @@
         android:text="TextView"
         android:layout_gravity="right"/>
 
-<TextView
+    <TextView
         android:id="@+id/enunciado"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-<!--    <Fragment
-        android:id="@+id/quizFragment"
-        android:name="adriel145089.prototipo_tcc_aluno.tela_prova_questoes"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        tools:layout="@layout/fragment_tela_prova_questoes" />
--->
     <ListView
         android:id="@+id/listView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:choiceMode="multipleChoice"
     />
 
     <Button

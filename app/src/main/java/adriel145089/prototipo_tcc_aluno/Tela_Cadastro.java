@@ -65,7 +65,7 @@ public class Tela_Cadastro extends AppCompatActivity {
             CadastrarAluno cadastrarAluno = new CadastrarAluno(textView, fields, values);
             cadastrarAluno.execute();
 
-        Intent cadastro = new Intent(this, Tela_Inicial.class);
+        Intent cadastro = new Intent(this, Tela_Login.class);
         startActivity(cadastro);
 
 

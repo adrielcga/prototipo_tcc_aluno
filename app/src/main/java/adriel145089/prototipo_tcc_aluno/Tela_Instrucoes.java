@@ -20,6 +20,7 @@ public class Tela_Instrucoes extends AppCompatActivity {
 
 
     ReceberInstrucoes receberInstrucoes = new ReceberInstrucoes(textView);
+
         receberInstrucoes.execute();
 
     }

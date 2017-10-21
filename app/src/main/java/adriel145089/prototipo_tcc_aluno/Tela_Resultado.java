@@ -1,5 +1,6 @@
 package adriel145089.prototipo_tcc_aluno;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -17,23 +18,22 @@ public class Tela_Resultado extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela__resultado);
 
+        Intent abrirFinalizar = getIntent();
+
+            Bundle bundle_resposta = abrirFinalizar.getExtras();
+
+            if (bundle_resposta != null) {
+
+                String rspt = bundle_resposta.getString("enviarUsuario");
+
+                TextView resp = (TextView) findViewById(R.id.resultados);
+
+                resp.setText(rspt);
+
+            }
+
         resultados = (TextView) findViewById(R.id.resultados);
     }
-
-    /*public void voltarProva (View view){
-
-        Intent voltaProva = new Intent(this, Tela_Prova.class);
-        voltaProva.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-        startActivity(voltaProva);
-
-
-        /*
-        Intent voltaProva = new Intent();
-        voltaProva.putExtra("tag","atualizar");
-        setResult(Activity.RESULT_OK,voltaProva);
-        finish();
-
-    }*/
 
 
     public void enviarResultado (View view){

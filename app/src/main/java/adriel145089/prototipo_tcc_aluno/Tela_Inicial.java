@@ -26,7 +26,7 @@ public class Tela_Inicial extends AppCompatActivity implements ZXingScannerView.
     private ZXingScannerView CameraScanner;
     String url = "";
     String parametros = "";
-    //String qrcode;
+    public static String qrcode;
     TextView textviewQrcode;
 
     public static final String TAG = "LOG";
@@ -116,8 +116,8 @@ public class Tela_Inicial extends AppCompatActivity implements ZXingScannerView.
         //caixa de dialogo perguntando se o usuario realmente quer sair
 
         mMaterialDialog = new MaterialDialog(this)
-                .setTitle("DESEJA REALMENTE SAIR?")
-                .setMessage( "Se sair perderá todo o progresso ate agora" )
+                .setTitle("DESEJA VOLTAR?")
+                .setMessage( "Se retornar sera deslogado" )
                 .setPositiveButton("Ok", new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -168,7 +168,8 @@ public class Tela_Inicial extends AppCompatActivity implements ZXingScannerView.
     public void CheckQrCode (View view){
 
 
-        String qrcode = textviewQrcode.getText().toString();
+        qrcode = textviewQrcode.getText().toString();
+
         //verificação da rede
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
@@ -199,11 +200,9 @@ public class Tela_Inicial extends AppCompatActivity implements ZXingScannerView.
 
         protected void onPostExecute(String result){
 
-            //enviarUsuario.setText(result);
             if (result.contains("QrCode_aceito")){
 
                 Intent abrirInstrucoes = new Intent(Tela_Inicial.this, Tela_Instrucoes.class);
-
                 startActivity(abrirInstrucoes);
             } else {
 

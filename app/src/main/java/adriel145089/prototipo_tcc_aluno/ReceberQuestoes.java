@@ -25,6 +25,10 @@ public class ReceberQuestoes extends AsyncTask <Void, Void, String> {
     private  String[] fields;
     private  String[] values;
 
+        //t = (TextView) findViewById(R.id.textView1); //aqui você põem o nome do id do textView
+        //t.setText("TextView saiu da Main para a Main2");
+
+
     public ReceberQuestoes(Tela_Prova tela_prova, String[] fields, String[] values){
         this.tela_prova = tela_prova;
         this.fields   = fields;
@@ -35,6 +39,8 @@ public class ReceberQuestoes extends AsyncTask <Void, Void, String> {
     protected String doInBackground(Void... objects) {
         HttpURLConnection httpURLConnection = null;
         try {
+
+
             /*
                Preparando os dados para envio via post
              */
@@ -44,7 +50,7 @@ public class ReceberQuestoes extends AsyncTask <Void, Void, String> {
                             //URLEncoder.encode("table","UTF-8")+"="+
                             //URLEncoder.encode("questao","UTF-8")+"&"+
                             URLEncoder.encode("IdAvaliacao","UTF-8")+"="+
-                            URLEncoder.encode("555","UTF-8")
+                            URLEncoder.encode(Tela_Inicial.qrcode,"UTF-8")
             ;
 
 

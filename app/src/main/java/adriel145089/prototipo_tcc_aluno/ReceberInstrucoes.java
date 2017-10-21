@@ -17,8 +17,9 @@ import java.net.URLEncoder;
 
 public class ReceberInstrucoes extends AsyncTask<Void, Void, String>{
 
-private static final String HOST = "http://es.ft.unicamp.br/ulisses/appaluno/receber_descricao";
+private static final String HOST = "http://es.ft.unicamp.br/ulisses/appaluno/receber_descricao.php";
 TextView textView;
+
 
 
 

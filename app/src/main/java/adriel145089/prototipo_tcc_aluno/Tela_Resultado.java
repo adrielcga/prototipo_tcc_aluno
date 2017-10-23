@@ -24,7 +24,7 @@ public class Tela_Resultado extends AppCompatActivity {
 
             if (bundle_resposta != null) {
 
-                String rspt = bundle_resposta.getString("enviarUsuario");
+                String rspt = bundle_resposta.getString("Resposta");
 
                 TextView resp = (TextView) findViewById(R.id.resultados);
 

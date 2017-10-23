@@ -35,6 +35,7 @@ public class Tela_Prova extends AppCompatActivity implements AdapterView.OnItemS
     private TextView enunciado;
     private ArrayAdapter  arrayAdapter;
     ArrayList<String> alternativas;
+    String str = "";
 
     private MaterialDialog mMaterialDialog;
 
@@ -70,6 +71,7 @@ public class Tela_Prova extends AppCompatActivity implements AdapterView.OnItemS
                 } else {
                     Log.v("asdfasdf", questao + ","+ position);
                     Tela_Prova.this.respostas[questao][position] = true;
+
                 }
 
             }
@@ -146,7 +148,7 @@ public class Tela_Prova extends AppCompatActivity implements AdapterView.OnItemS
 
     private void exibirArray(){
         for (int i = 0; i < respostas.length; i++){
-            String str = "";
+            //String str = "";
             for (int j = 0; j < 9; j++){
                 str += respostas[i][j]+",";
             }
@@ -207,7 +209,7 @@ public class Tela_Prova extends AppCompatActivity implements AdapterView.OnItemS
         Intent abrirtela = new Intent(Tela_Prova.this, Tela_Resultado.class);
         abrirtela.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
         Bundle bundle_resposta = new Bundle();
-        bundle_resposta.putString("Resposta", respostas.toString());
+        bundle_resposta.putString("Resposta", str);
         abrirtela.putExtras(bundle_resposta);
         startActivity(abrirtela);
 
@@ -219,7 +221,7 @@ public class Tela_Prova extends AppCompatActivity implements AdapterView.OnItemS
 
         mMaterialDialog = new MaterialDialog(this)
                 .setTitle("DESEJA REALMENTE SAIR?")
-                .setMessage( "Se sair perderá todo o progresso ate agora" )
+                .setMessage( "Se sair, retornará a tela de login" )
                 .setPositiveButton("Ok", new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

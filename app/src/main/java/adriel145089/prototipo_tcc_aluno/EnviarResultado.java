@@ -33,6 +33,8 @@ public class EnviarResultado extends AsyncTask<Void, Void, String>{
     @Override
     protected String doInBackground(Void... objects) {
         HttpURLConnection httpURLConnection = null;
+
+
         try {
 
                //Preparando os dados para envio via post
@@ -41,8 +43,9 @@ public class EnviarResultado extends AsyncTask<Void, Void, String>{
                             //URLEncoder.encode("appaluno","UTF-8")+"&"+
 
                             URLEncoder.encode("table","UTF-8")+"="+
-                            URLEncoder.encode("","UTF-8")+"="+ //-----------------falta nome da tabela
-                            URLEncoder.encode(Tela_Inicial.qrcode,"UTF-8");
+                            URLEncoder.encode("realizaprova","UTF-8")+"="+
+                            URLEncoder.encode(Tela_Inicial.qrcode,"UTF-8")+"="+
+                            URLEncoder.encode(Tela_Login.RA,"UTF-8");
 
             for(int i = 0; i < fields.length; i++) {
                 data +=  "&" +  URLEncoder.encode(fields[i] , "UTF-8") + "=" +

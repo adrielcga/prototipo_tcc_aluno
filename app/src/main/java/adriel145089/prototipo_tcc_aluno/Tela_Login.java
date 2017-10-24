@@ -13,10 +13,11 @@ import android.widget.Toast;
 
 public class Tela_Login extends AppCompatActivity {
 
-    EditText enviarUsuario, enviarSenha;
+    public static EditText enviarUsuario, enviarSenha;
     String url = "";
     String parametros = "";
-
+    public static String RA = enviarUsuario.getText().toString();
+    //public static String Senha = enviarSenha.getText().toString();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

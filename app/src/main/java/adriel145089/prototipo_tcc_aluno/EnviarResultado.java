@@ -19,7 +19,7 @@ public class EnviarResultado extends AsyncTask<Void, Void, String>{
 
 
 
-    private static final String HOST = "http://es.ft.unicamp.br/ulisses/appaluno/resultado_adr.php";//colocar url do servidor ----------------------falta url
+    private static final String HOST = "http://187.37.188.243:4000/projetotcc/resultado_adr.php";//colocar url do servidor ----------------------falta url
     TextView textView;
     private String[] fields;
     private String[] values;
@@ -44,8 +44,8 @@ public class EnviarResultado extends AsyncTask<Void, Void, String>{
 
                             URLEncoder.encode("table","UTF-8")+"="+
                             URLEncoder.encode("realizaprova","UTF-8")+"="+
-                            URLEncoder.encode(Tela_Inicial.qrcode,"UTF-8")+"="+
-                            URLEncoder.encode(Tela_Login.RA,"UTF-8");
+                            URLEncoder.encode(Tela_Inicial.qrcode,"UTF-8");//+"="+
+                            //URLEncoder.encode(Tela_Login.RA,"UTF-8");
 
             for(int i = 0; i < fields.length; i++) {
                 data +=  "&" +  URLEncoder.encode(fields[i] , "UTF-8") + "=" +

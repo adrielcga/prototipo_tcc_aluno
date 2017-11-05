@@ -68,7 +68,7 @@ public class Tela_Cadastro extends AppCompatActivity {
         Intent cadastro = new Intent(this, Tela_Login.class);
         startActivity(cadastro);
 
-
+        finish();
 
     }
 

@@ -17,7 +17,7 @@ public class Tela_Login extends AppCompatActivity {
     EditText enviarSenha;
     String url = "";
     String parametros = "";
-    public static String RA = enviarUsuario.getText().toString();
+    //public static String RA = enviarUsuario.getText().toString();
     //public static String Senha = enviarSenha.getText().toString();
 
     @Override

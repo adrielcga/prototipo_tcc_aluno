@@ -49,7 +49,7 @@ public class ReceberQuestoes extends AsyncTask <Void, Void, String> {
                             //URLEncoder.encode("appaluno","UTF-8")+"&"+
                             //URLEncoder.encode("table","UTF-8")+"="+
                             //URLEncoder.encode("questao","UTF-8")+"&"+
-                            URLEncoder.encode("IdAvaliacao","UTF-8")+"="+
+                            URLEncoder.encode("QRCodeProva","UTF-8")+"="+
                             URLEncoder.encode(Tela_Inicial.qrcode,"UTF-8")
             ;
 

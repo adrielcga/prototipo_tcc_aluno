@@ -17,8 +17,9 @@ public class Tela_Login extends AppCompatActivity {
     EditText enviarSenha;
     String url = "";
     String parametros = "";
-    //public static String RA = enviarUsuario.getText().toString();
+    public static String RA;
     //public static String Senha = enviarSenha.getText().toString();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +52,7 @@ public class Tela_Login extends AppCompatActivity {
 
         if (networkInfo != null && networkInfo.isConnected()){
 
-            String RA = enviarUsuario.getText().toString();
+            RA = enviarUsuario.getText().toString();
             String senha = enviarSenha.getText().toString();
 
             if (RA.isEmpty() || senha.isEmpty()){
@@ -61,7 +62,7 @@ public class Tela_Login extends AppCompatActivity {
 
                 url = "http://es.ft.unicamp.br/ulisses/appaluno/login_adr.php"; //url do servidor
 
-                parametros = "RaAluno=" +RA + "&senha=" +senha;
+                parametros = "RAAluno=" +RA + "&SenhaAluno=" +senha;
 
                 new SolicitaDados().execute(url);
             }

@@ -22,13 +22,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Tela_Instrucoes"
+            android:name=".Tela_Inicial"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Tela_Prova"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Tela_Inicial"
+            android:name=".Tela_Instrucoes"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Tela_Cadastro"

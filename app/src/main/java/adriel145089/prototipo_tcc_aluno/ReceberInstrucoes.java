@@ -38,8 +38,8 @@ protected String doInBackground(Void... objects) {
              */
         String data =
         URLEncoder.encode("table","UTF-8")+"="+
-        URLEncoder.encode("Avaliacao","UTF-8") + "&"+
-        URLEncoder.encode("hash","UTF-8")+"="+
+        URLEncoder.encode("prova","UTF-8") + "&"+
+        URLEncoder.encode("QRCodeProva","UTF-8")+"="+
         URLEncoder.encode(Tela_Inicial.qrcode,"UTF-8");
 
 

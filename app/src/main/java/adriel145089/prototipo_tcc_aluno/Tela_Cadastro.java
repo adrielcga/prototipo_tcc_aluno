@@ -3,6 +3,7 @@ package adriel145089.prototipo_tcc_aluno;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -64,6 +65,7 @@ public class Tela_Cadastro extends AppCompatActivity {
 
             CadastrarAluno cadastrarAluno = new CadastrarAluno(textView, fields, values);
             cadastrarAluno.execute();
+            Log.v("Cadastro", "iniciando");
 
         Intent cadastro = new Intent(this, Tela_Login.class);
         startActivity(cadastro);

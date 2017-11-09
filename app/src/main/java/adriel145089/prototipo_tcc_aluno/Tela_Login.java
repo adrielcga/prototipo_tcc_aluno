@@ -7,6 +7,7 @@ import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -63,6 +64,7 @@ public class Tela_Login extends AppCompatActivity {
                 url = "http://es.ft.unicamp.br/ulisses/appaluno/login_adr.php"; //url do servidor
 
                 parametros = "RAAluno=" +RA + "&SenhaAluno=" +senha;
+                Log.v("LOGIN", "iniciando");
 
                 new SolicitaDados().execute(url);
             }
@@ -86,6 +88,7 @@ public class Tela_Login extends AppCompatActivity {
         protected void onPostExecute(String result){
 
             //enviarUsuario.setText(result);
+            Log.v("LOGIN", result);
             if (result.contains("login_ok")){
 
                 Intent abrirInicio = new Intent(Tela_Login.this, Tela_Inicial.class);

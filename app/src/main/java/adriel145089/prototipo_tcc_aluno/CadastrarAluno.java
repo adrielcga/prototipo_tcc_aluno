@@ -1,6 +1,7 @@
 package adriel145089.prototipo_tcc_aluno;
 
 import android.os.AsyncTask;
+import android.util.Log;
 import android.widget.TextView;
 
 import java.io.BufferedReader;
@@ -99,6 +100,7 @@ public class CadastrarAluno extends AsyncTask <Void, Void, String>{
     protected  void onPostExecute(String result){
 
         textView.setText(result);
+        Log.d(result, "onPostExecute:");
     }
 
 

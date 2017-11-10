@@ -42,13 +42,18 @@ public class Tela_Instrucoes extends AppCompatActivity {
         if (networkInfo != null && networkInfo.isConnected()){
 
 
-            String Hash = Tela_Inicial.qrcode;
+            Toast.makeText(Tela_Instrucoes.this, "Boa Prova!", Toast.LENGTH_SHORT).show();
 
-            parametros = "QRCodeProva" + Hash;
+            Intent abrirProva = new Intent(Tela_Instrucoes.this, Tela_Prova.class);
+            startActivity(abrirProva);
 
-            url = "http://es.ft.unicamp.br/ulisses/appaluno/libera_prova_adr.php"; //url do servidor
+            //String Hash = Tela_Inicial.qrcode;
 
-            new LiberarProva().execute(url);
+            //parametros = "QRCodeProva=" + Hash;
+
+            //url = "http://es.ft.unicamp.br/ulisses/appaluno/libera_prova_adr.php"; //url do servidor
+
+            //new LiberarProva().execute(url);
         }
     }
 

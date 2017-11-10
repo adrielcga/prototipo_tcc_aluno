@@ -51,7 +51,7 @@ public class Tela_Cadastro extends AppCompatActivity {
         public void Cadastrar (View view){
 
 
-            String RaAluno = ra.getText().toString();
+            String RAAluno = ra.getText().toString();
             String Nome = nome.getText().toString();
             String Email = email.getText().toString();
             String senha = senhacad.getText().toString();
@@ -61,16 +61,16 @@ public class Tela_Cadastro extends AppCompatActivity {
             textView.setText("sdf");
 
             String[] fields = {"RAAluno", "NomeAluno", "EmailAluno", "SenhaAluno"};
-            String[] values = {RaAluno, Nome, Email, senha};
+            String[] values = {RAAluno, Nome, Email, senha};
 
             CadastrarAluno cadastrarAluno = new CadastrarAluno(textView, fields, values);
             cadastrarAluno.execute();
             Log.v("Cadastro", "iniciando");
 
-        Intent cadastro = new Intent(this, Tela_Login.class);
-        startActivity(cadastro);
+        //Intent cadastro = new Intent(this, Tela_Login.class);
+        //startActivity(cadastro);
 
-        finish();
+        //finish();
 
     }
 

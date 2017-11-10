@@ -38,6 +38,8 @@ public class CadastrarAluno extends AsyncTask <Void, Void, String>{
              */
             String data =
 
+                            //URLEncoder.encode("database","UTF-8")+"="+
+                            //URLEncoder.encode("bancotcc","UTF-8")+"="+
                             URLEncoder.encode("table","UTF-8")+"="+
                             URLEncoder.encode("aluno","UTF-8");
 

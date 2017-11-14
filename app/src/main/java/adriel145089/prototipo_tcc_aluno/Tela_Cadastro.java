@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Tela_Cadastro extends AppCompatActivity {
 
@@ -67,10 +68,13 @@ public class Tela_Cadastro extends AppCompatActivity {
             cadastrarAluno.execute();
             Log.v("Cadastro", "iniciando");
 
-        //Intent cadastro = new Intent(this, Tela_Login.class);
-        //startActivity(cadastro);
 
-        //finish();
+        Toast.makeText(getApplicationContext(), "Login efetuado com sucesso", Toast.LENGTH_LONG).show();
+
+        Intent cadastro = new Intent(this, Tela_Login.class);
+        startActivity(cadastro);
+
+        finish();
 
     }
 

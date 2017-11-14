@@ -45,6 +45,7 @@ public class Tela_Instrucoes extends AppCompatActivity {
             Toast.makeText(Tela_Instrucoes.this, "Boa Prova!", Toast.LENGTH_SHORT).show();
 
             Intent abrirProva = new Intent(Tela_Instrucoes.this, Tela_Prova.class);
+
             startActivity(abrirProva);
 
             //String Hash = Tela_Inicial.qrcode;

@@ -37,8 +37,8 @@ protected String doInBackground(Void... objects) {
                Preparando os dados para envio via post
              */
         String data =
-        URLEncoder.encode("table","UTF-8")+"="+
-        URLEncoder.encode("prova","UTF-8") + "&"+
+        //URLEncoder.encode("table","UTF-8")+"="+
+        //URLEncoder.encode("prova","UTF-8") + "&"+
         URLEncoder.encode("QRCodeProva","UTF-8")+"="+
         URLEncoder.encode(Tela_Inicial.qrcode,"UTF-8");
 

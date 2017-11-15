@@ -210,6 +210,7 @@ public class Tela_Prova extends AppCompatActivity implements AdapterView.OnItemS
         abrirtela.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
         Bundle bundle_resposta = new Bundle();
         bundle_resposta.putString("Resposta", str.toString());
+        bundle_resposta.putSerializable("Resposta_Array", respostas);
         abrirtela.putExtras(bundle_resposta);
         startActivity(abrirtela);
 

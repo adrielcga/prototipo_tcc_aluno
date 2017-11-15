@@ -20,7 +20,7 @@ import java.net.URLEncoder;
 
 public class ReceberQuestoes extends AsyncTask <Void, Void, String> {
 
-    private static final String HOST = "http://es.ft.unicamp.br/ulisses/appaluno/get_questoes.php";
+    private static final String HOST = Constantes.URL_BASE + "/get_questoes.php";
     private  Tela_Prova tela_prova;
     private  String[] fields;
     private  String[] values;

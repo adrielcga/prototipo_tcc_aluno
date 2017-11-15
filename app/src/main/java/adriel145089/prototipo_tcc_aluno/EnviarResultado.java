@@ -19,7 +19,7 @@ public class EnviarResultado extends AsyncTask<Void, Void, String>{
 
 
 
-    private static final String HOST = "http://es.ft.unicamp.br/ulisses/appaluno/resultado_adr.php";//colocar url do servidor ----------------------falta url
+    private static final String HOST = Constantes.URL_BASE + "/resultado_adr.php";//colocar url do servidor ----------------------falta url
     TextView textView;
     private String[] fields;
     private String[] values;

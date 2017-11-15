@@ -52,7 +52,7 @@ public class Tela_Instrucoes extends AppCompatActivity {
 
             //parametros = "QRCodeProva=" + Hash;
 
-            //url = "http://es.ft.unicamp.br/ulisses/appaluno/libera_prova_adr.php"; //url do servidor
+            //url = Constantes.URL_BASE + "/libera_prova_adr.php"; //url do servidor
 
             //new LiberarProva().execute(url);
         }

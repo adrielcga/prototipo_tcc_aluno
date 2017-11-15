@@ -61,7 +61,7 @@ public class Tela_Login extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Preencha todos os campos", Toast.LENGTH_LONG).show();
             } else {
 
-                url = "http://es.ft.unicamp.br/ulisses/appaluno/login_adr.php"; //url do servidor
+                url = Constantes.URL_BASE + "/login_adr.php"; //url do servidor
 
                 parametros = "RAAluno=" +RA + "&SenhaAluno=" +senha;
                 Log.v("LOGIN", "iniciando");

@@ -176,7 +176,7 @@ public class Tela_Inicial extends AppCompatActivity implements ZXingScannerView.
 
         if (networkInfo != null && networkInfo.isConnected()){
 
-                url = "http://es.ft.unicamp.br/ulisses/appaluno/qrcode_adr.php"; //url do servidor
+                url = Constantes.URL_BASE + "/qrcode_adr.php"; //url do servidor
 
                 parametros = "QRCodeProva=" +qrcode;
 

@@ -180,12 +180,12 @@ public class Tela_Prova extends AppCompatActivity implements AdapterView.OnItemS
 
             for (int i = 0; i < enunFiels.length; i++){
                 String x = jsonObject.getString(enunFiels[i]);
-                if (!x.equals("null")){
+                if (!x.equals("null") && !x.trim().equals("")){
                     alternativas.add(x);
                 }
+                listView.setItemChecked(i, respostas[questao][i]);
             }
             arrayAdapter.notifyDataSetChanged();
-
 
         }  catch (JSONException exception){
             exception.printStackTrace();

@@ -18,7 +18,7 @@ import java.net.URLEncoder;
 
 public class CadastrarAluno extends AsyncTask <Void, Void, String>{
 
-    private static final String HOST = "http://es.ft.unicamp.br/ulisses/appaluno/insert_data.php";//colocar url do servidor
+    private static final String HOST = Constantes.URL_BASE + "/insert_data.php";//colocar url do servidor
     TextView textView;
     private String[] fields;
     private String[] values;

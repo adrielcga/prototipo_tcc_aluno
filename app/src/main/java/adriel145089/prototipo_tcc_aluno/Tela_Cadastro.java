@@ -69,6 +69,8 @@ public class Tela_Cadastro extends AppCompatActivity {
             Log.v("Cadastro", "iniciando");
 
 
+
+    //if (content)
         Toast.makeText(getApplicationContext(), "Login efetuado com sucesso", Toast.LENGTH_LONG).show();
 
         Intent cadastro = new Intent(this, Tela_Login.class);

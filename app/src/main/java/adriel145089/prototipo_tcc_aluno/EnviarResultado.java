@@ -42,8 +42,8 @@ public class EnviarResultado extends AsyncTask<Void, Void, String>{
                     //URLEncoder.encode("database","UTF-8")+"="+
                             //URLEncoder.encode("appaluno","UTF-8")+"&"+
 
-                            URLEncoder.encode("table","UTF-8")+"="+
-                            URLEncoder.encode("realizaprova","UTF-8")+"="+
+                            //URLEncoder.encode("table","UTF-8")+"="+
+                            //URLEncoder.encode("realizaprova","UTF-8")+"="+
                             URLEncoder.encode("QRCodeProva","UTF-8")+"="+
                             URLEncoder.encode(Tela_Inicial.qrcode,"UTF-8")+"="+
                             URLEncoder.encode("RAAluno","UTF-8")+"="+

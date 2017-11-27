@@ -105,8 +105,4 @@ public class CadastrarAluno extends AsyncTask <Void, Void, String>{
         Log.d(result, "onPostExecute:");
     }
 
-
-
-
-
 }

@@ -28,7 +28,7 @@ public class Tela_Resultado extends AppCompatActivity {
 
             if (bundle_resposta != null) {
 
-                String rspt = bundle_resposta.getString("Resposta");
+                StringBuilder rspt = new StringBuilder();
                 boolean[][] respostas = (boolean[][]) bundle_resposta.getSerializable("Resposta_Array");
 
                 TextView resp = (TextView) findViewById(R.id.resultados);
@@ -40,6 +40,7 @@ public class Tela_Resultado extends AppCompatActivity {
                         if (respostas[i][j]) {
                             selecionadas.add((char) ('A' + j));
                         }
+                        rspt.append(respostas[i][j]).append(",");
                     }
                     stringBuilder.append(i+1);
                     stringBuilder.append(") ");
@@ -48,7 +49,7 @@ public class Tela_Resultado extends AppCompatActivity {
                 }
 
                 resp.setText(stringBuilder.toString());
-                resultadosStr = rspt;
+                resultadosStr = rspt.toString();
 
             }
 
